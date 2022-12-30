@@ -1,6 +1,0 @@
-POST http://localhost:8080/chats
-Content-Type: application/json
-
-{
-  "message": "Write me a business idea for Cashback"
-}
