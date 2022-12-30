@@ -7,7 +7,7 @@
   "scripts": {
     "build": "swc src -d build",
     "dev": "swc src -d build --watch & nodemon",
-    "start": "node --loader=./loader.js build/server.js"
+    "start": "node --experimental-specifier-resolution=node build/server.js"
   },
   "keywords": [],
   "author": "",
