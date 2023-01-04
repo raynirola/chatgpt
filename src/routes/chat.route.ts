@@ -3,7 +3,7 @@ import { Router } from 'express'
 import { ChatController } from '@/controllers'
 import ValidateRequest from '@/middlewares/Validate'
 
-const createChatSchema = z.object({
+const schema = z.object({
   message: z
     .string({
       required_error: 'Message is a required field',
@@ -19,6 +19,6 @@ const createChatSchema = z.object({
 
 const chat = Router() as Router
 
-chat.post('/', ValidateRequest(createChatSchema), ChatController.create)
+chat.post('/', ValidateRequest({ schema }), ChatController.create)
 
 export default chat
