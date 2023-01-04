@@ -9,7 +9,10 @@ const config = {
   },
   openai: {
     password: process.env.OPENAI_PASSWORD,
-    email: process.env.OPENAI_EMAIL
+    email: process.env.OPENAI_EMAIL,
+    api: {
+      key: process.env.OPENAI_API_KEY
+    }
   }
 }
 

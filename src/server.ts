@@ -17,6 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/', routes.home)
 app.use('/chats', AuthMiddleware, routes.chat)
+app.use('/ai', AuthMiddleware, routes.ai)
 app.use(ErrorMiddleware)
 
 app.listen(config.port, () => console.log(`Server is running at ${config.port}`))
