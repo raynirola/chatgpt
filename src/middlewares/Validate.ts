@@ -1,8 +1,28 @@
 import { ZodSchema } from 'zod'
 import { RequestHandler } from 'express'
 
-function ValidateRequest(schema: ZodSchema, type: 'body' | 'query' | 'params' = 'body'): RequestHandler {
-  if (Array.isArray(type) && type.every(key => ['body', 'query', 'params'].includes(key))) {
+const Filters = {
+  body: 'body',
+  query: 'query',
+  params: 'params'
+} as const
+
+type ArgsWithSingleType = {
+  schema: ZodSchema
+  type?: typeof Filters[keyof typeof Filters]
+}
+
+type ArgsWithMultipleTypes = {
+  schema: ZodSchema
+  type?: (typeof Filters[keyof typeof Filters])[]
+}
+
+type Args = ArgsWithSingleType | ArgsWithMultipleTypes
+type ValidateRequest = (args: Args) => RequestHandler
+
+const ValidateRequest: ValidateRequest = ({schema, type = 'body'}) => {
+
+  if (Array.isArray(type) && type.every(key => Object.keys(Filters).includes(key))) {
     for (const key of type) {
       return async (req, _res, next) => {
         try {
