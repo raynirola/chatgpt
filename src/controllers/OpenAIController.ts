@@ -16,9 +16,7 @@ const OpenAIController: OpenAIController = {
       max_tokens: req.body.tokens
     })
 
-    res.status(200).json({
-      completion: completion.data.choices[0]?.text
-    })
+    res.status(200).json(completion.data.choices.map(c => ({ text: c.text, index: c.index })))
   }
 }
 
