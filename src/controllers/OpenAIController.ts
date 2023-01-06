@@ -5,12 +5,14 @@ interface OpenAIController {
   text: RequestHandler
 }
 
-const OpenAIController = {
+const OpenAIController: OpenAIController = {
   text: async (req, res) => {
+    console.dir(req.body)
     const completion = await openai.createCompletion({
-      model: 'text-davinci-003',
+      model: req.body.model,
       prompt: req.body.prompt,
-      temperature: 0,
+      temperature: req.body.temperature,
+      stop: req.body.stop,
       max_tokens: req.body.tokens
     })
 
