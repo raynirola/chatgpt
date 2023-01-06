@@ -5,6 +5,4 @@ const chat = new ChatGPTAPIBrowser({
   password: process.env.OPENAI_PASSWORD
 })
 
-chat.initSession()
-
 export default chat

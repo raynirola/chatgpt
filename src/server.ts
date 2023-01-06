@@ -16,7 +16,6 @@ app.use(morgan(':method :url :status * :response-time ms'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/', routes.home)
-app.use('/chats', AuthMiddleware, routes.chat)
 app.use('/ai', AuthMiddleware, routes.ai)
 app.use(ErrorMiddleware)
 
