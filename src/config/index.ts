@@ -13,7 +13,9 @@ const config = {
     api: {
       key: process.env.OPENAI_API_KEY
     }
-  }
+  },
+  temp_access_keys: (process.env.TEMP_ACCESS_KEYS as string).split(','),
+  proxies: (process.env.PROXIES as string).split(',')
 }
 
 export default config

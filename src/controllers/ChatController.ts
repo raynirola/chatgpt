@@ -5,9 +5,9 @@ import HttpStatus from 'http-status-codes'
 
 class ChatController extends Controller {
   create: RequestHandler = async (req, res) => {
+    console.dir(req.body, { depth: null })
     try {
       const response = await chat.sendMessage(req.body.message)
-
       res.status(200).json(response)
     } catch (error) {
       console.dir({
